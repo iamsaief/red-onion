@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import ProductDetails from "./components/Shop/ProductDetails";
 import Order from "./components/Order/Order";
+import Delivery from "./components/Order/Delivery";
+import Login from "./components/Login/Login";
 
 export const ShopContext = createContext();
 
@@ -31,6 +33,12 @@ function App() {
 					</Route>
 					<Route path="/order">
 						<Order></Order>
+					</Route>
+					<Route path="/delivery">
+						<Delivery></Delivery>
+					</Route>
+					<Route path="/login">
+						<Login></Login>
 					</Route>
 				</Switch>
 				<Footer></Footer>

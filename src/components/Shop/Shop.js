@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Product from "./Product";
 import { fakeData } from "../../fakeData";
+import { ShopContext } from "../../App";
+import { Link } from "react-router-dom";
 
 const Shop = () => {
 	const menuItems = fakeData;
@@ -13,6 +15,10 @@ const Shop = () => {
 		const newCategory = menuItems.filter((item) => item.category === category);
 		setDisplayCategory(newCategory);
 	};
+
+	const {
+		cart: [cartItems, setCartItems],
+	} = useContext(ShopContext);
 
 	return (
 		<section className="rd-shop py-5 text-center">
@@ -32,9 +38,11 @@ const Shop = () => {
 					</div>
 				</div>
 				<div className="rd-shop-checkout">
-					<button className="btn btn-danger" disabled>
-						Checkout Your Food
-					</button>
+					<Link to="/order">
+						<button className="btn btn-danger rd-primary" disabled={!cartItems.length && true}>
+							Checkout Your Food
+						</button>
+					</Link>
 				</div>
 			</div>
 		</section>
